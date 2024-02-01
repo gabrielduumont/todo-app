@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import PageContainer from './components/atoms/PageContainer'
 import Title from './components/atoms/Title'
+import TodoList from './components/organisms/TodoList'
 
 const AppContainer = styled.div`
   background: linear-gradient(to right, #6dd5ed, #2193b0);
@@ -18,8 +19,7 @@ const App = () => {
         <Title subtitle="your todo's list in glassmorphic style" align="right">
           welcome to glass2do
         </Title>
-        <div>INPUT NEW TODOS</div>
-        <div>TODO LIST</div>
+        <TodoList />
       </PageContainer>
     </AppContainer>
   )
