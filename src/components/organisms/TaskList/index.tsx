@@ -1,7 +1,23 @@
-import TaskItem from '@project/components/molecules/TaskItem'
+import TaskItem from 'components/molecules/TaskItem'
+import { useTodoListContext } from 'contexts/TodoListContext'
+import { NoItemsMessage } from './styles'
 
 const TaskList = () => {
-  return [1,2,3].map(task => (<TaskItem key={task} />))
+  const [{ todoTasks }] = useTodoListContext()
+
+  if(!todoTasks.length){
+    return (
+      <NoItemsMessage>No tasks yet</NoItemsMessage>
+    )
+  }
+
+  return (
+    <>
+      {todoTasks.map((task) => (
+        <TaskItem key={task.id} />
+      ))}
+    </>
+  )
 }
 
 export default TaskList

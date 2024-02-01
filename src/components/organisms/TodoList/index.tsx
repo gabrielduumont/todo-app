@@ -1,6 +1,6 @@
-import NewTaskForm from '@project/components/molecules/NewTaskForm'
-import TodoListContextContainer from '@project/contexts/TodoListContext'
-import TaskList from '../TaskList'
+import NewTaskForm from 'components/molecules/NewTaskForm'
+import TaskList from 'components/organisms/TaskList'
+import TodoListContextContainer from 'contexts/TodoListContext'
 
 const TodoList = () => {
   return (
