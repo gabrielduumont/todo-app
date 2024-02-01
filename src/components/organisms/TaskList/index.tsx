@@ -14,7 +14,7 @@ const TaskList = () => {
   return (
     <>
       {todoTasks.map((task) => (
-        <TaskItem key={task.id} />
+        <TaskItem key={task.id} {...task} />
       ))}
     </>
   )
