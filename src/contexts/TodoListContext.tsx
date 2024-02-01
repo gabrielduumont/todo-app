@@ -1,14 +1,19 @@
+import LoadingSpinner from 'components/atoms/InlineLoading'
 import {
   ReactNode,
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useState,
 } from 'react'
 import { Todo } from 'types/Todo'
+import { getStorageItem, saveStorageItem } from 'utils/localStorageAdapter'
+import { todoTaskListValidator } from 'utils/todoTaskListValidator'
 
 type TodoListContextStates = {
   todoTasks: Todo[]
+  started: boolean
 }
 type TodoListContextModifiers = {
   addTodoTask: (task: Todo) => void
@@ -21,9 +26,12 @@ type TodoListContextType = {
   modifiers: TodoListContextModifiers
 }
 
+const FAKE_REQUEST_TIMEOUT_IN_MILISECONDS = 1500
+
 export const TodoListContext = createContext<TodoListContextType>({
   states: {
     todoTasks: [],
+    started: false,
   },
   modifiers: {
     addTodoTask: () => {},
@@ -40,6 +48,7 @@ export const useTodoListContext = () => {
 
 const TodoListContextContainer = ({ children }: { children: ReactNode }) => {
   const [todoTasks, setTodoTasks] = useState<Todo[]>([])
+  const [started, setStarted] = useState<boolean>(false)
 
   const addTodoTask = useCallback(
     (task: Todo) => {
@@ -76,6 +85,7 @@ const TodoListContextContainer = ({ children }: { children: ReactNode }) => {
   )
 
   const states: TodoListContextStates = {
+    started,
     todoTasks,
   }
 
@@ -90,9 +100,47 @@ const TodoListContextContainer = ({ children }: { children: ReactNode }) => {
     modifiers,
   }
 
+  useEffect(() => {
+    const onMountContext = () => {
+      const tasksSavedOnStorage = getStorageItem(
+        'todoTasks',
+        todoTaskListValidator,
+      )
+      if (!tasksSavedOnStorage) {
+        return
+      }
+
+      setTodoTasks(tasksSavedOnStorage)
+    }
+    if (!started) {
+      onMountContext()
+      // adding timeout just for us to be able to see the loading state, so that the app behaves like it would be calling an API and taking some time
+      setTimeout(() => {
+        setStarted(true)
+      }, FAKE_REQUEST_TIMEOUT_IN_MILISECONDS)
+    }
+  }, [started])
+
+  useEffect(() => {
+    saveStorageItem(todoTasks, 'todoTasks')
+  }, [todoTasks])
+
   return (
     <TodoListContext.Provider value={contextValue}>
-      <>{children}</>
+      {started ? (
+        <>{children}</>
+      ) : (
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '12px',
+          }}
+        >
+          <LoadingSpinner isLoading />
+        </div>
+      )}
     </TodoListContext.Provider>
   )
 }
