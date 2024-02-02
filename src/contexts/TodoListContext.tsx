@@ -48,9 +48,9 @@ export const useTodoListContext = () => {
   return [states, modifiers] as const
 }
 
-const TodoListContextContainer = ({ children }: { children: ReactNode }) => {
+const TodoListContextContainer = ({ children, testRun }: { children: ReactNode, testRun?: boolean }) => {
   const [todoTasks, setTodoTasks] = useState<Todo[]>([])
-  const [started, setStarted] = useState<boolean>(false)
+  const [started, setStarted] = useState<boolean>(testRun ?? false)
 
   const addTodoTask = useCallback(
     (task: Todo) => {

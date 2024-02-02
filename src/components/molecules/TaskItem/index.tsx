@@ -14,13 +14,21 @@ import { useState } from 'react'
 import { Todo } from 'types/Todo'
 import { IconContainer, TaskContainer, TaskName } from './styles'
 
+const parseBooleanValidHtmlAttribute = (value?: boolean) => {
+  if (!value) {
+    return undefined
+  }
+
+  return `${value}`
+}
+
 const TaskItem = ({ id, name, completed }: Todo) => {
   const [editedTaskName, setEditedTaskName] = useState('')
   const [isEditing, setIsEditing] = useState(false)
   const [, { updateTodoStatus, removeTodoTask, updateTodoName }] =
     useTodoListContext()
 
-  const onIconClick = () => {
+  const onCheckClick = () => {
     if (completed) {
       return
     }
@@ -79,7 +87,7 @@ const TaskItem = ({ id, name, completed }: Todo) => {
   }
 
   const onSaveEditing = () => {
-    if (completed || !isEditing) {
+    if (completed || !isEditing || !editedTaskName) {
       return
     }
 
@@ -88,30 +96,43 @@ const TaskItem = ({ id, name, completed }: Todo) => {
   }
 
   return (
-    <TaskContainer completed={completed}>
+    <TaskContainer completed={parseBooleanValidHtmlAttribute(completed)}>
       {isEditing ? (
         <Input
-          placeholder="Type new task name"
+          placeholder="Edit task name"
           value={editedTaskName}
           onValueChange={setEditedTaskName}
           onEnterPress={onSaveEditing}
         />
       ) : (
         <>
-          <IconContainer completed={completed} onClick={onIconClick}>
-            {completed ? <CheckBoxOutlined /> : <CheckBoxOutlineBlank />}
+          <IconContainer
+            completed={parseBooleanValidHtmlAttribute(completed)}
+            onClick={onCheckClick}
+            data-testid="checkbox"
+          >
+            {completed ? (
+              <CheckBoxOutlined data-testid="checkbox-marked" />
+            ) : (
+              <CheckBoxOutlineBlank data-testid="checkbox-blank" />
+            )}
           </IconContainer>
-          <TaskName completed={completed}>{name}</TaskName>
+          <TaskName
+            completed={parseBooleanValidHtmlAttribute(completed)}
+            data-testid="task-name"
+          >
+            {name}
+          </TaskName>
         </>
       )}
       {completed ? (
         <>
           <IconContainer onClick={onUndoClick}>
-            <Undo />
+            <Undo data-testid="undo-button" />
           </IconContainer>
 
           <IconContainer onClick={confirmDelete}>
-            <Delete />
+            <Delete data-testid="delete-button" />
           </IconContainer>
         </>
       ) : (
@@ -119,15 +140,15 @@ const TaskItem = ({ id, name, completed }: Todo) => {
           {isEditing ? (
             <>
               <IconContainer onClick={onCancelEditing}>
-                <Cancel />
+                <Cancel data-testid="cancel-edit-button" />
               </IconContainer>
               <IconContainer onClick={onSaveEditing}>
-                <Save />
+                <Save data-testid="save-edit-button" />
               </IconContainer>
             </>
           ) : (
             <IconContainer onClick={onEditClick}>
-              <Edit />
+              <Edit data-testid="edit-button" />
             </IconContainer>
           )}
         </>

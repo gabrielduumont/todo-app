@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const getColor = (completed?: boolean) => {
+const getColor = (completed?: string) => {
   if (completed) {
     return '55, 55, 55'
   }
@@ -8,7 +8,7 @@ const getColor = (completed?: boolean) => {
   return '255, 255, 255'
 }
 
-export const TaskContainer = styled.div<{ completed?: boolean }>`
+export const TaskContainer = styled.div<{ completed?: string }>`
   background: rgba(${(props) => getColor(props.completed)}, 0.2);
   backdrop-filter: blur(10px);
   border-radius: 8px;
@@ -20,7 +20,7 @@ export const TaskContainer = styled.div<{ completed?: boolean }>`
   gap: 8px;
 `
 
-export const TaskName = styled.span<{ completed?: boolean }>`
+export const TaskName = styled.span<{ completed?: string }>`
   text-decoration: ${(props) => (props.completed ? 'line-through' : 'none')};
   color: ${(props) => (props.completed ? '#777' : '#fff')};
   font-weight: ${(props) => (props.completed ? 'lighter' : 'bold')};
@@ -28,7 +28,7 @@ export const TaskName = styled.span<{ completed?: boolean }>`
   font-size: 14px;
 `
 
-export const IconContainer = styled.div<{ completed?: boolean }>`
+export const IconContainer = styled.div<{ completed?: string }>`
   cursor: ${(props) => (props.completed ? 'not-allowed' : 'pointer')};
   color: #fff;
   display: flex;
