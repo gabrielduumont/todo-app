@@ -13,7 +13,6 @@ import { todoTaskListValidator } from 'utils/todoTaskListValidator'
 
 type TodoListContextStates = {
   todoTasks: Todo[]
-  started: boolean
 }
 type TodoListContextModifiers = {
   addTodoTask: (task: Todo) => void
@@ -32,7 +31,6 @@ const FAKE_REQUEST_TIMEOUT_IN_MILISECONDS = 1500
 export const TodoListContext = createContext<TodoListContextType>({
   states: {
     todoTasks: [],
-    started: false,
   },
   modifiers: {
     addTodoTask: () => {},
@@ -48,7 +46,13 @@ export const useTodoListContext = () => {
   return [states, modifiers] as const
 }
 
-const TodoListContextContainer = ({ children, testRun }: { children: ReactNode, testRun?: boolean }) => {
+const TodoListContextContainer = ({
+  children,
+  testRun,
+}: {
+  children: ReactNode
+  testRun?: boolean
+}) => {
   const [todoTasks, setTodoTasks] = useState<Todo[]>([])
   const [started, setStarted] = useState<boolean>(testRun ?? false)
 
@@ -104,7 +108,6 @@ const TodoListContextContainer = ({ children, testRun }: { children: ReactNode, 
   )
 
   const states: TodoListContextStates = {
-    started,
     todoTasks,
   }
 
