@@ -1,6 +1,6 @@
 import { Todo } from 'types/Todo'
 
-const isValidTodo = (value: unknown): value is Todo => {
+export const isValidTodo = (value: unknown): value is Todo => {
   return Boolean(
     value &&
       typeof value === 'object' &&
