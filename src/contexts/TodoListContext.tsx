@@ -19,6 +19,7 @@ type TodoListContextModifiers = {
   addTodoTask: (task: Todo) => void
   removeTodoTask: (taskId: string) => void
   updateTodoStatus: (taskId: string, completed?: boolean) => void
+  updateTodoName: (taskId: string, name: string) => void
 }
 
 type TodoListContextType = {
@@ -37,6 +38,7 @@ export const TodoListContext = createContext<TodoListContextType>({
     addTodoTask: () => {},
     updateTodoStatus: () => {},
     removeTodoTask: () => {},
+    updateTodoName: () => {},
   },
 })
 
@@ -84,6 +86,23 @@ const TodoListContextContainer = ({ children }: { children: ReactNode }) => {
     [todoTasks],
   )
 
+  const updateTodoName = useCallback(
+    (taskId: string, name: string) => {
+      const updatedTasks = [...todoTasks].map((task) => {
+        if (task.id === taskId) {
+          return {
+            ...task,
+            name
+          }
+        }
+
+        return task
+      })
+      setTodoTasks(updatedTasks)
+    },
+    [todoTasks],
+  )
+
   const states: TodoListContextStates = {
     started,
     todoTasks,
@@ -93,6 +112,7 @@ const TodoListContextContainer = ({ children }: { children: ReactNode }) => {
     addTodoTask,
     removeTodoTask,
     updateTodoStatus,
+    updateTodoName
   }
 
   const contextValue: TodoListContextType = {

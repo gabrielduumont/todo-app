@@ -20,7 +20,7 @@ export const TaskContainer = styled.div<{ completed?: boolean }>`
   gap: 8px;
 `
 
-export const TaskName = styled.span<{ completed: boolean }>`
+export const TaskName = styled.span<{ completed?: boolean }>`
   text-decoration: ${(props) => (props.completed ? 'line-through' : 'none')};
   color: ${(props) => props.completed ? '#777' : '#fff' };
   font-weight: ${(props) => props.completed ? 'lighter' : 'bold' };
