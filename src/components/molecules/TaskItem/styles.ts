@@ -22,8 +22,10 @@ export const TaskContainer = styled.div<{ completed?: boolean }>`
 
 export const TaskName = styled.span<{ completed: boolean }>`
   text-decoration: ${(props) => (props.completed ? 'line-through' : 'none')};
-  color: rgb(${(props) => (getColor(props.completed))});
+  color: ${(props) => props.completed ? '#777' : '#fff' };
+  font-weight: ${(props) => props.completed ? 'lighter' : 'bold' };
   flex-grow: 1;
+  font-size: 14px;
 `
 
 export const IconContainer = styled.div<{ completed?: boolean }>`
