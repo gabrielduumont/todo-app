@@ -5,10 +5,8 @@ import { NoItemsMessage } from './styles'
 const TaskList = () => {
   const [{ todoTasks }] = useTodoListContext()
 
-  if(!todoTasks.length){
-    return (
-      <NoItemsMessage>No tasks yet</NoItemsMessage>
-    )
+  if (!todoTasks.length) {
+    return <NoItemsMessage>No tasks yet</NoItemsMessage>
   }
 
   return (

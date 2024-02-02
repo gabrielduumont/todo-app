@@ -32,5 +32,5 @@ export const saveStorageItem = <T>(item: T, key: StorageItemKeys) => {
   }
 
   localStorage.setItem(key, JSON.stringify(item))
-  return true;
+  return true
 }

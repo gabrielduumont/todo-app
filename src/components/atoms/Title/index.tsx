@@ -3,7 +3,7 @@ import {
   Container,
   SubtitleContainer,
   TitleContainer,
-} from './styles';
+} from './styles'
 
 type TitleProps = { children: string; subtitle?: string; align?: Alignment }
 

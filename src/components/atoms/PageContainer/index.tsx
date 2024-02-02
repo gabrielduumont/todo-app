@@ -1,12 +1,10 @@
-import { ReactNode } from "react";
-import { GlassmorphicContainer } from "./styles";
+import { ReactNode } from 'react'
+import { GlassmorphicContainer } from './styles'
 
-const PageContainer = ({ children}: { children: ReactNode}) => (
+const PageContainer = ({ children }: { children: ReactNode }) => (
   <GlassmorphicContainer>
-    <>
-      {children}
-    </>
+    <>{children}</>
   </GlassmorphicContainer>
-);
+)
 
-export default PageContainer;
+export default PageContainer

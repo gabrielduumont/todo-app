@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const GlassmorphicButton = styled.button`
   background: rgba(255, 255, 255, 0.2);
@@ -22,4 +22,4 @@ export const GlassmorphicButton = styled.button`
   &:hover {
     background: rgba(255, 255, 255, 0.25);
   }
-`;
+`

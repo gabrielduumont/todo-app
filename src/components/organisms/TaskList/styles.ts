@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-
 export const NoItemsMessage = styled.p`
   color: #000;
   font-size: 0.75rem;

@@ -92,7 +92,7 @@ const TodoListContextContainer = ({ children }: { children: ReactNode }) => {
         if (task.id === taskId) {
           return {
             ...task,
-            name
+            name,
           }
         }
 
@@ -112,7 +112,7 @@ const TodoListContextContainer = ({ children }: { children: ReactNode }) => {
     addTodoTask,
     removeTodoTask,
     updateTodoStatus,
-    updateTodoName
+    updateTodoName,
   }
 
   const contextValue: TodoListContextType = {

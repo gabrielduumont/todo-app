@@ -82,7 +82,7 @@ const TaskItem = ({ id, name, completed }: Todo) => {
     if (completed || !isEditing) {
       return
     }
-    
+
     updateTodoName(id, editedTaskName)
     closeEditingMode()
   }

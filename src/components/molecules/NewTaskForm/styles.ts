@@ -6,5 +6,5 @@ export const NewTaskFormContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 12px
+  gap: 12px;
 `

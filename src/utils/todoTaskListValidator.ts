@@ -3,13 +3,13 @@ import { Todo } from 'types/Todo'
 const isValidTodo = (value: unknown): value is Todo => {
   return Boolean(
     value &&
-    typeof value === 'object' &&
-    'id' in value &&
-    typeof value.id === 'string' &&
-    'name' in value &&
-    typeof value.name === 'string' &&
-    'completed' in value &&
-    typeof value.completed === 'boolean'
+      typeof value === 'object' &&
+      'id' in value &&
+      typeof value.id === 'string' &&
+      'name' in value &&
+      typeof value.name === 'string' &&
+      'completed' in value &&
+      typeof value.completed === 'boolean',
   )
 }
 
