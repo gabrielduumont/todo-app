@@ -6,7 +6,7 @@ const LoadingSpinner = ({ isLoading }: { isLoading: boolean }) => {
   }
 
   return (
-    <div style={{ display: 'inline-block' }}>
+    <div style={{ display: 'inline-block' }} data-testid='spinner'>
       <GlassmorphicSpinner />
     </div>
   )
