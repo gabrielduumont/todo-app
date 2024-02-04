@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm run start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -16,7 +16,7 @@ You will also see any lint errors in the console.
 
 you can also run in production mode by running
 
-### `npm build`
+### `npm run build`
 
 then
 
@@ -26,4 +26,12 @@ then
 
 In the project directory, you can run:
 
-### `npm test:ci`
+### `npm run test:ci`
+
+## To run quality checks on the code
+
+In the project directory, you can run:
+
+### `npm run quality:check`
+
+this script will run the check if code formatting is following the rules, then it will run the unit tests to ensure code quality and at last it will build the solution to check if the build is not broken. Ideally this script will run before merges to master (from pull requests), and I usually like to add husky and make it run before I push code to the origin branch 
