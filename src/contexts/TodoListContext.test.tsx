@@ -174,7 +174,7 @@ describe('TodoListContextContainer', () => {
     const mockSaveFunction = jest.fn()
     ;(saveStorageItem as any) = jest.fn().mockImplementation(mockSaveFunction)
 
-   render(
+    render(
       <TodoListContextContainer testRun>
         <TestConsumer />
       </TodoListContextContainer>,

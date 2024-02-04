@@ -10,8 +10,8 @@ type ButtonProps = {
 
 const Button = ({ children, icon, onClick, disabled }: ButtonProps) => {
   const onButtonClick = () => {
-    if(disabled){
-      return;
+    if (disabled) {
+      return
     }
 
     onClick?.()

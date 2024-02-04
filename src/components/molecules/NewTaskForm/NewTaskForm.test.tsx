@@ -1,7 +1,6 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import TodoListContextContainer from 'contexts/TodoListContext';
-import NewTaskForm from './';
-
+import { fireEvent, render, screen } from '@testing-library/react'
+import TodoListContextContainer from 'contexts/TodoListContext'
+import NewTaskForm from './'
 
 describe('NewTaskForm', () => {
   it('updates the input value on change', () => {
@@ -14,13 +13,15 @@ describe('NewTaskForm', () => {
   })
 
   it('adds a new task on button click', () => {
-    crypto.randomUUID = jest.fn().mockReturnValue('mock-uuid-asd-asd-asd');
+    crypto.randomUUID = jest.fn().mockReturnValue('mock-uuid-asd-asd-asd')
     render(
       <TodoListContextContainer testRun>
         <NewTaskForm />
       </TodoListContextContainer>,
     )
-    const input = screen.getByPlaceholderText('Type new task name') as HTMLInputElement
+    const input = screen.getByPlaceholderText(
+      'Type new task name',
+    ) as HTMLInputElement
     fireEvent.change(input, { target: { value: 'New Task' } })
 
     const addButton = screen.getByRole('button')
@@ -29,7 +30,7 @@ describe('NewTaskForm', () => {
   })
 
   it('adds a new task on enter key press in input', () => {
-    crypto.randomUUID = jest.fn().mockReturnValue('mock-uuid-asd-asd-asd');
+    crypto.randomUUID = jest.fn().mockReturnValue('mock-uuid-asd-asd-asd')
     render(
       <TodoListContextContainer testRun>
         <NewTaskForm />

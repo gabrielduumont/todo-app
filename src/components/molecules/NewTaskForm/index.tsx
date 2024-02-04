@@ -11,8 +11,8 @@ const NewTaskForm = () => {
   const [, { addTodoTask }] = useTodoListContext()
 
   const onAddNewTask = () => {
-    if(!taskName){
-      return;
+    if (!taskName) {
+      return
     }
 
     const newTask: Todo = {
@@ -33,7 +33,11 @@ const NewTaskForm = () => {
         onValueChange={setTaskName}
         onEnterPress={onAddNewTask}
       />
-      <Button icon={<Add fontSize="small" />} onClick={onAddNewTask} disabled={!taskName} />
+      <Button
+        icon={<Add fontSize="small" />}
+        onClick={onAddNewTask}
+        disabled={!taskName}
+      />
     </NewTaskFormContainer>
   )
 }

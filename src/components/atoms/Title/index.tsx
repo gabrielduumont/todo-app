@@ -3,14 +3,16 @@ import {
   Container,
   SubtitleContainer,
   TitleContainer,
-} from './styles';
+} from './styles'
 
 type TitleProps = { children: string; subtitle?: string; align?: Alignment }
 
 const Title = ({ children, subtitle, align }: TitleProps) => (
-  <Container align={align} data-testid='title-container'>
+  <Container align={align} data-testid="title-container">
     <TitleContainer>{children}</TitleContainer>
-    {subtitle && <SubtitleContainer data-testid='subtitle'>{subtitle}</SubtitleContainer>}
+    {subtitle && (
+      <SubtitleContainer data-testid="subtitle">{subtitle}</SubtitleContainer>
+    )}
   </Container>
 )
 

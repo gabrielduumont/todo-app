@@ -26,7 +26,7 @@ export const GlassmorphicButton = styled.button`
   &:disabled {
     background: rgba(0, 0, 0, 0.25);
     color: #999;
-    border-color:rgba(0, 0, 0, 0.3);
+    border-color: rgba(0, 0, 0, 0.3);
     cursor: not-allowed;
   }
 `

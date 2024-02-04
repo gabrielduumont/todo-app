@@ -201,6 +201,5 @@ describe('TaskItem', () => {
       fireEvent.click(undoButton)
       expect(updateTodoStatus).toHaveBeenCalledWith(mockCompleteTask.id, false)
     })
-
   })
 })
