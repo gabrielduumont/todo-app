@@ -22,4 +22,11 @@ export const GlassmorphicButton = styled.button`
   &:hover {
     background: rgba(255, 255, 255, 0.25);
   }
+
+  &:disabled {
+    background: rgba(0, 0, 0, 0.25);
+    color: #999;
+    border-color:rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+  }
 `

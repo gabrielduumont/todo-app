@@ -11,6 +11,10 @@ const NewTaskForm = () => {
   const [, { addTodoTask }] = useTodoListContext()
 
   const onAddNewTask = () => {
+    if(!taskName){
+      return;
+    }
+
     const newTask: Todo = {
       id: crypto.randomUUID(),
       name: taskName,
@@ -29,7 +33,7 @@ const NewTaskForm = () => {
         onValueChange={setTaskName}
         onEnterPress={onAddNewTask}
       />
-      <Button icon={<Add fontSize="small" />} onClick={onAddNewTask} />
+      <Button icon={<Add fontSize="small" />} onClick={onAddNewTask} disabled={!taskName} />
     </NewTaskFormContainer>
   )
 }
