@@ -22,3 +22,10 @@ you can also run in production mode by running
 then 
 
 ### `serve -s build`
+
+
+## To run Unit Tests on this project
+
+In the project directory, you can run:
+
+### `npm test:ci`
